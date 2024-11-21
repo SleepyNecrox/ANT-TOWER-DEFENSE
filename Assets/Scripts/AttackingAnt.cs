@@ -16,28 +16,28 @@ public class AttackingAnt : MonoBehaviour
     private Transform currentTarget;
     private bool isAttacking;
     private float attackTimer;
-
     private string enemyTag;
 
     void Start()
-{
-    agent = GetComponent<NavMeshAgent>();
-    agent.speed = moveSpeed;
-
-    if (tag == "Red")
     {
-        enemyTag = "Blue";
-        enemyBase = GameObject.FindWithTag("BlueBase").transform;
-    }
-    else if (tag == "Blue")
-    {
-        enemyTag = "Red";
-        enemyBase = GameObject.FindWithTag("RedBase").transform;
-    }
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
 
-    currentTarget = enemyBase;
-    MoveToTarget();
-}
+        if (tag == "Red")
+        {
+            enemyTag = "Blue";
+            enemyBase = GameObject.FindWithTag("BlueBase").transform;
+        }
+
+        else if (tag == "Blue")
+        {
+            enemyTag = "Red";
+            enemyBase = GameObject.FindWithTag("RedBase").transform;
+        }
+
+        currentTarget = enemyBase;
+        MoveToTarget();
+    }
 
     void Update()
     {
@@ -63,6 +63,7 @@ public class AttackingAnt : MonoBehaviour
         {
             AttackTarget();
         }
+
         else
         {
             isAttacking = false;
