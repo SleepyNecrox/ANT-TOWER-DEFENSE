@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class CinemachineCameraController : MonoBehaviour
+public class CameraControl : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private  float minX = -10f;
