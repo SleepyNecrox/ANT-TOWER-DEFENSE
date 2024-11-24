@@ -60,6 +60,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: antName
+      value: Commandant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: antType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: upgradeCost
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6537929805546817075, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -82,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6827275637445692379, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: currentHealth
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7285275332124311012, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Enabled

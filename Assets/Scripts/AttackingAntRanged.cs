@@ -6,10 +6,9 @@ using UnityEngine.AI;
 public class AttackingAntRanged : MonoBehaviour
 {
     private Transform enemyBase;
-    [SerializeField] internal float detectionRadius = 5f;
-    [SerializeField] internal float attackDistance = 1.5f;
-    [SerializeField] internal float moveSpeed = 3.5f;
-    [SerializeField] internal float attackCooldown = 1.5f;
+    [SerializeField] internal float detectionRadius;
+    [SerializeField] internal float attackDistance;
+    [SerializeField] internal float attackCooldown;
     [SerializeField] internal GameObject arrowPrefab;
 
     [SerializeField] internal Transform shootArea;
@@ -21,10 +20,14 @@ public class AttackingAntRanged : MonoBehaviour
     private float attackTimer;
     private string enemyTag;
 
+    private AntStats antStats;
+
     void Start()
     {
+        antStats = GetComponent<AntStats>();
+
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        agent.speed = antStats.speed;
 
         if (tag == "Red")
         {

@@ -60,6 +60,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: antName
+      value: Antartica
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: antType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: upgradeCost
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6537929805546817075, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

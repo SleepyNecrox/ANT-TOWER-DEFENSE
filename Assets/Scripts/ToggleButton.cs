@@ -39,6 +39,6 @@ public class ToggleButton : MonoBehaviour
 
     public void GoDown()
     {
-        cardsGroup.anchoredPosition = new Vector3(originalPosition.x, originalPosition.y - 115f, originalPosition.z);
+        cardsGroup.anchoredPosition = new Vector3(originalPosition.x, originalPosition.y - 125f, originalPosition.z);
     }
 }

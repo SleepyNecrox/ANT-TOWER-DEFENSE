@@ -19,16 +19,33 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private Timer timer;
 
-    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private TextMeshProUGUI cdText;
     [SerializeField] private GameObject infoBox;
+
+    [SerializeField] private TextMeshProUGUI nameTXT;
+    [SerializeField] private TextMeshProUGUI hpTXT;
+    [SerializeField] private TextMeshProUGUI dmgTXT;
+    [SerializeField] private TextMeshProUGUI spdTXT;
+    [SerializeField] private TextMeshProUGUI upgradeTXT;
+
+    [SerializeField] private Button upgradeButton;
+    private AntStats antStats;
 
     void Start()
     {
         timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
-        textMeshProUGUI.text = "";
+        cdText.text = "";
         originalScale = transform.localScale;
         originalSiblingIndex = transform.GetSiblingIndex();
         parentLayoutGroup = GetComponentInParent<HorizontalLayoutGroup>();
+
+        antStats = antPrefab.GetComponent<AntStats>();
+
+        upgradeButton.onClick.AddListener(() =>
+        {
+            InfoBox infoBoxScript = infoBox.GetComponent<InfoBox>();
+            infoBoxScript.UpgradeAnt();
+        });
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -63,8 +80,21 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             infoBox.SetActive(true);
+            InfoBox infoBoxScript = infoBox.GetComponent<InfoBox>();
+            infoBoxScript.ShowInfo(antStats);
+            UpdateInfoBox();
         }
         
+    }
+
+    public void UpdateInfoBox()
+    {
+        antStats.upgradeCost = Mathf.Ceil(antStats.upgradeCost);
+        nameTXT.text = antStats.antName;
+        hpTXT.text = $"HP: {antStats.health}";
+        dmgTXT.text = $"DMG: {antStats.damage}";
+        spdTXT.text = $"SPD: {antStats.speed}";
+        upgradeTXT.text = $" UPGRADE: {antStats.upgradeCost}";
     }
 
     private IEnumerator StartCooldown()
@@ -77,14 +107,14 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         while (remainingCooldown > 0)
         {
-            textMeshProUGUI.text = Mathf.CeilToInt(remainingCooldown).ToString();
+            cdText.text = Mathf.CeilToInt(remainingCooldown).ToString();
             remainingCooldown -= Time.deltaTime;
             yield return null;
         }
 
         isCooldown = false;
         GetComponent<Image>().color = Color.white;
-        textMeshProUGUI.text = "";
+        cdText.text = "";
     }
 }
 

@@ -6,22 +6,23 @@ using UnityEngine.AI;
 public class AttackingAnt : MonoBehaviour
 {
     private Transform enemyBase;
-    [SerializeField] internal float detectionRadius = 5f;
-    [SerializeField] internal float attackDistance = 1.5f;
-    [SerializeField] internal float moveSpeed = 3.5f;
-    [SerializeField] internal float attackCooldown = 1.5f;
-    [SerializeField] internal int attackDamage = 10;
-
+    [SerializeField] internal float detectionRadius;
+    [SerializeField] internal float attackDistance;
+    [SerializeField] internal float attackCooldown;
     private NavMeshAgent agent;
     private Transform currentTarget;
     private bool isAttacking;
     private float attackTimer;
     private string enemyTag;
 
+    private AntStats antStats;
+
     void Start()
     {
+        antStats = GetComponent<AntStats>();
+
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        agent.speed = antStats.speed;
 
         if (tag == "Red")
         {
@@ -89,7 +90,7 @@ public class AttackingAnt : MonoBehaviour
             Health targetHealth = currentTarget.GetComponent<Health>();
             if (targetHealth != null)
             {
-                targetHealth.TakeDamage(attackDamage);
+                targetHealth.TakeDamage(antStats.damage);
             }
 
             attackTimer = attackCooldown;
