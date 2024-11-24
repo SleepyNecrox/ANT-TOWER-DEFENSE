@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ProjectileRock : MonoBehaviour
 {
-
-    public enum ProjectileType
-    {
-        Rock,
-        Arrow
-    }
-
-    [SerializeField] private ProjectileType projectileType;
     [SerializeField] private float speed;
     [SerializeField] private int damage;
     [SerializeField] private float lifetime;
+
+    private string enemyTag;
 
     private Rigidbody rb;
 
@@ -26,29 +20,31 @@ public class ProjectileRock : MonoBehaviour
     {
         Destroy(gameObject, lifetime);
 
-        if(projectileType == ProjectileType.Arrow)
+        if (tag == "Red")
         {
-            Vector3 direction = new Vector3(1, 1, 0).normalized;
-            rb.AddForce(direction * speed, ForceMode.Impulse);
+            enemyTag = "Blue";
+        }
+        else if (tag == "Blue")
+        {
+            enemyTag = "Red";
         }
     }
 
     void Update()
     {
-        if(projectileType == ProjectileType.Rock)
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("PLEASE HIT");
-        Health targetHealth = other.GetComponent<Health>();
-        if (targetHealth != null)
+        if (other.CompareTag(enemyTag))
         {
-            targetHealth.TakeDamage(damage);
+            Health targetHealth = other.GetComponent<Health>();
+            if (targetHealth != null)
+            {
+                targetHealth.TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }

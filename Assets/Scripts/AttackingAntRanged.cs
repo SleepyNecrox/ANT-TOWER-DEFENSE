@@ -56,21 +56,29 @@ public class AttackingAntRanged : MonoBehaviour
                 MoveToTarget();
             }
         }
-        else if (currentTarget != enemyBase)
+        
+        else if (currentTarget != enemyBase) 
         {
             currentTarget = enemyBase;
             MoveToTarget();
         }
 
-        if (currentTarget != null && Vector3.Distance(transform.position, currentTarget.position) <= attackDistance)
+        if (currentTarget != null)
         {
-            AttackTarget();
-        }
+            float distanceToTarget = Vector3.Distance(transform.position, currentTarget.position);
 
-        else
-        {
-            isAttacking = false;
-            agent.isStopped = false;
+            if (distanceToTarget <= attackDistance)
+            {
+                AttackTarget();
+                agent.isStopped = true;
+            }
+
+            else
+            {
+                isAttacking = false;
+                agent.isStopped = false;
+                MoveToTarget();
+            }
         }
     }
 

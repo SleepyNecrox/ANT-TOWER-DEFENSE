@@ -20,6 +20,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Timer timer;
 
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private GameObject infoBox;
 
     void Start()
     {
@@ -46,15 +47,24 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isCooldown) return;
-
-        if (Timer.playerGold >= goldCost)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Timer.playerGold -= goldCost;
-            timer.UpdateGold();
-            Instantiate(antPrefab, spawnLocation.position, Quaternion.identity);
-            StartCoroutine(StartCooldown());
+            if (isCooldown) return;
+
+            if (Timer.playerGold >= goldCost)
+            {
+                Timer.playerGold -= goldCost;
+                timer.UpdateGold();
+                Instantiate(antPrefab, spawnLocation.position, Quaternion.identity);
+                StartCoroutine(StartCooldown());
+            }
         }
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            infoBox.SetActive(true);
+        }
+        
     }
 
     private IEnumerator StartCooldown()

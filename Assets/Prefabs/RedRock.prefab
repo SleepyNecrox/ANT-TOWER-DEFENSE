@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -8798237514587333787}
   - component: {fileID: 4509883871178437268}
   m_Layer: 0
-  m_Name: Rock
-  m_TagString: Untagged
+  m_Name: RedRock
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8225534155274100153}
   - component: {fileID: 592836083243079052}
   - component: {fileID: 7881759103346229368}
-  - component: {fileID: 9063400964764385929}
+  - component: {fileID: 6395604394141724952}
   m_Layer: 0
-  m_Name: Arrow
-  m_TagString: Untagged
+  m_Name: BlueArrow
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 72
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &592836083243079052
 CapsuleCollider:
@@ -135,7 +135,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.09
-  m_Height: 0.94
+  m_Height: 1.84
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7881759103346229368
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7f46bd7b02d6e4ab8cfb3ac726def8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9063400964764385929
+--- !u!114 &6395604394141724952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,10 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5798960395400329550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f26c2448fac544487b69e301f18c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 59be48ccfba20b54a827c3c7e8f3d9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: 1
   speed: 5
   damage: 7
   lifetime: 3
+  upwardForce: 5
