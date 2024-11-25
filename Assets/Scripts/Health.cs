@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] internal int maxHealth = 30;
     [SerializeField] internal int currentHealth;
     private Slider healthSlider;
     private SpriteRenderer spriteRenderer;
+
+    private AntStats antStats;
     void Start()
     {
-        currentHealth = maxHealth;
+        antStats = GetComponent<AntStats>();
+        currentHealth = antStats.health;
         healthSlider = GetComponentInChildren<Slider>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         if (healthSlider != null)
         {
-            healthSlider.maxValue = maxHealth;
+            healthSlider.maxValue =antStats.health;
             healthSlider.value = currentHealth;
         }
     }
@@ -25,16 +27,9 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        if (currentHealth > 0)
-        {
-            StartCoroutine(FlashRed());
-        }
-
-        if (healthSlider != null)
-        {
-            healthSlider.value = currentHealth;
-        }
+        healthSlider.value = currentHealth;
+        StartCoroutine(FlashRed());
+    
 
         if (currentHealth <= 0)
         {

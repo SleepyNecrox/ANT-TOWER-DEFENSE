@@ -16,7 +16,6 @@ public class AttackingAntRanged : MonoBehaviour
 
     private NavMeshAgent agent;
     private Transform currentTarget;
-    private bool isAttacking;
     private float attackTimer;
     private string enemyTag;
 
@@ -78,7 +77,6 @@ public class AttackingAntRanged : MonoBehaviour
 
             else
             {
-                isAttacking = false;
                 agent.isStopped = false;
                 MoveToTarget();
             }

@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI goldTXT;
     [SerializeField] private int startTime = 5;
     private float currentTime;
-    public static int playerGold = 10; 
+    public static int playerGold = 15; 
 
     void Start()
     {

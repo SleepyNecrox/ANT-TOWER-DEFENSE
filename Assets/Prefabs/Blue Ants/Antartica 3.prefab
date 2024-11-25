@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2223455749280077039, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Name
-      value: Antartica Variant
+      value: Antartica 3
       objectReference: {fileID: 0}
     - target: {fileID: 2223455749280077039, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Layer
@@ -62,19 +62,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: speed
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: damage
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: health
-      value: 100
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: antName
-      value: Antartica
+      value: '[3] Antartica'
       objectReference: {fileID: 0}
     - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: antType
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2850481969776235679, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: upgradeCost
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6537929805546817075, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_AnchorMax.x

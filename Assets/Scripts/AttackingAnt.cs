@@ -11,7 +11,6 @@ public class AttackingAnt : MonoBehaviour
     [SerializeField] internal float attackCooldown;
     private NavMeshAgent agent;
     private Transform currentTarget;
-    private bool isAttacking;
     private float attackTimer;
     private string enemyTag;
 
@@ -67,7 +66,6 @@ public class AttackingAnt : MonoBehaviour
 
         else
         {
-            isAttacking = false;
             agent.isStopped = false;
         }
     }
