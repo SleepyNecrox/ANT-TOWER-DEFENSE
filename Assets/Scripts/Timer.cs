@@ -6,15 +6,24 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerTXT;
-    [SerializeField] private TextMeshProUGUI goldTXT;
-    [SerializeField] private int startTime = 5;
+    [SerializeField] private TextMeshProUGUI player1GoldTXT;
+    [SerializeField] private TextMeshProUGUI player2GoldTXT;
     private float currentTime;
-    public static int playerGold = 15; 
+
+    private Gold player1Gold;
+    private Gold player2Gold;
 
     void Start()
     {
+        Gold[] allGoldScripts = FindObjectsOfType<Gold>();
+        foreach (Gold goldScript in allGoldScripts)
+        {
+            if (goldScript.playerID == 1) player1Gold = goldScript;
+            if (goldScript.playerID == 2) player2Gold = goldScript;
+        }
+
         UpdateGold();
-        currentTime = startTime * 60;
+        currentTime = 300f;;
         StartCoroutine(AddGold());
     }
 
@@ -45,13 +54,15 @@ public class Timer : MonoBehaviour
         while (currentTime > 0)
         {
             yield return new WaitForSeconds(2f);
-            playerGold += 1;
+            player1Gold.AddGold(1);
+            player2Gold.AddGold(1);
             UpdateGold();
         }
     }
 
     public void UpdateGold()
     {
-        goldTXT.text = $"{playerGold} Gold";
+        player1GoldTXT.text = $"{player1Gold.gold} Gold";
+        player2GoldTXT.text = $"{player2Gold.gold} Gold";
     }
 }

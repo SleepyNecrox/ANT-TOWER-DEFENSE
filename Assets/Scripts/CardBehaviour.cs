@@ -19,6 +19,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Vector3 originalScale;
     private int originalSiblingIndex;
     private Timer timer;
+    private Gold playerGold;
     [SerializeField] private TextMeshProUGUI cdText;
     [SerializeField] private GameObject infoBox;
 
@@ -27,16 +28,24 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI dmgTXT;
     [SerializeField] private TextMeshProUGUI spdTXT;
     [SerializeField] private TextMeshProUGUI upgradeTXT;
-
     [SerializeField] private Button upgradeButton;
-
     [SerializeField] private GameObject button;
     private AntStats antStats;
-
     [SerializeField] internal int level = 1;
+    [SerializeField] private int playerID;
 
     void Start()
     {
+        Gold[] allGoldScripts = FindObjectsOfType<Gold>();
+        foreach (Gold goldScript in allGoldScripts)
+        {
+            if (goldScript.playerID == playerID)
+            {
+                playerGold = goldScript;
+                break;
+            }
+        }
+
         timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
         cdText.text = "";
         originalScale = transform.localScale;
@@ -72,23 +81,23 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             if (isCooldown) return;
 
-            if (level == 1 && Timer.playerGold >= goldCost)
+            if (level == 1 && playerGold.CanAfford(goldCost))
             {
-                Timer.playerGold -= goldCost;
+                playerGold.gold -= goldCost;
                 timer.UpdateGold();
                 Instantiate(antPrefab, spawnLocation.position, Quaternion.identity);
                 StartCoroutine(StartCooldown());
             }
-            else if (level == 2 && Timer.playerGold >= goldCost)
+            else if (level == 2 && playerGold.CanAfford(goldCost))
             {
-                Timer.playerGold -= goldCost;
+                playerGold.gold -= goldCost;
                 timer.UpdateGold();
                 Instantiate(antPrefab2, spawnLocation.position, Quaternion.identity);
                 StartCoroutine(StartCooldown());
             }
-            else if (level == 3 && Timer.playerGold >= goldCost)
+            else if (level == 3 && playerGold.CanAfford(goldCost))
             {
-                Timer.playerGold -= goldCost;
+                playerGold.gold -= goldCost;
                 timer.UpdateGold();
                 Instantiate(antPrefab3, spawnLocation.position, Quaternion.identity);
                 StartCoroutine(StartCooldown());
@@ -96,12 +105,12 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
 
         if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            infoBox.SetActive(true);
-            InfoBox infoBoxScript = infoBox.GetComponent<InfoBox>();
-            infoBoxScript.ShowInfo(antStats, this);
-            UpdateInfoBox();
-        }
+    {
+        infoBox.SetActive(true);
+        InfoBox infoBoxScript = infoBox.GetComponent<InfoBox>();
+        infoBoxScript.ShowInfo(antStats, this, playerGold); 
+        UpdateInfoBox();
+    }
     }
 
     public void Upgrade()

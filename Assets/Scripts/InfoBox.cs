@@ -10,17 +10,16 @@ public class InfoBox : MonoBehaviour
     public TextMeshProUGUI goldText;
     private AntStats currentAntStats;
     private CardBehaviour currentCard;
-    private Timer timer;
 
-    void Start()
-    {
-        timer = GameObject.FindWithTag("Timer").GetComponent<Timer>();
-    }
-    public void ShowInfo(AntStats antStats, CardBehaviour cardBehaviour)
+    private Gold playerGold;
+
+    public void ShowInfo(AntStats antStats, CardBehaviour cardBehaviour, Gold playerGoldRef)
     {
         currentCard = cardBehaviour;
         currentAntStats = antStats;
+        playerGold = playerGoldRef; 
         infoBox.SetActive(true);
+        UpdateGoldText();
     }
 
     public void Close()
@@ -30,13 +29,18 @@ public class InfoBox : MonoBehaviour
 
     public void UpgradeAnt()
     {
-        if (Timer.playerGold >= currentAntStats.upgradeCost && currentCard.level < 3)
+        if (playerGold.CanAfford(currentAntStats.upgradeCost) && currentCard.level < 3)
         {
-            Timer.playerGold -= Mathf.RoundToInt(currentAntStats.upgradeCost);
-            timer.UpdateGold();
+            playerGold.SpendGold(Mathf.RoundToInt(currentAntStats.upgradeCost));
             currentCard.Upgrade();
-
             currentCard.UpdateInfoBox();
+            UpdateGoldText();
         }
+    
+    }
+
+    private void UpdateGoldText()
+    {
+        goldText.text = $"{playerGold.gold} Gold";
     }
 }
