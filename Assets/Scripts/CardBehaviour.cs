@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
 public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -85,21 +86,21 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 playerGold.gold -= goldCost;
                 timer.UpdateGold();
-                Instantiate(antPrefab, spawnLocation.position, Quaternion.identity);
+                PhotonNetwork.Instantiate(antPrefab.name, spawnLocation.position, Quaternion.identity);
                 StartCoroutine(StartCooldown());
             }
             else if (level == 2 && playerGold.CanAfford(goldCost))
             {
                 playerGold.gold -= goldCost;
                 timer.UpdateGold();
-                Instantiate(antPrefab2, spawnLocation.position, Quaternion.identity);
+                PhotonNetwork.Instantiate(antPrefab2.name, spawnLocation.position, Quaternion.identity);
                 StartCoroutine(StartCooldown());
             }
             else if (level == 3 && playerGold.CanAfford(goldCost))
             {
                 playerGold.gold -= goldCost;
                 timer.UpdateGold();
-                Instantiate(antPrefab3, spawnLocation.position, Quaternion.identity);
+                PhotonNetwork.Instantiate(antPrefab3.name, spawnLocation.position, Quaternion.identity);
                 StartCoroutine(StartCooldown());
             }
         }

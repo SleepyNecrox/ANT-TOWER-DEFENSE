@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviourPunCallbacks
 {
     [SerializeField] internal int currentHealth;
     private Slider healthSlider;
     private SpriteRenderer spriteRenderer;
 
     private AntStats antStats;
+
     void Start()
     {
         antStats = GetComponent<AntStats>();
@@ -19,23 +21,37 @@ public class Health : MonoBehaviour
 
         if (healthSlider != null)
         {
-            healthSlider.maxValue =antStats.health;
+            healthSlider.maxValue = antStats.health;
             healthSlider.value = currentHealth;
         }
     }
 
     public void TakeDamage(int damage)
     {
+        if (photonView.IsMine)
+        {
+            photonView.RPC("SyncTakeDamage", RpcTarget.All, damage);
+        }
+    }
+
+    [PunRPC]
+    private void SyncTakeDamage(int damage)
+    {
         currentHealth -= damage;
-        healthSlider.value = currentHealth;
+
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+        }
+
         StartCoroutine(FlashRed());
-    
 
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
     }
+
     private IEnumerator FlashRed()
     {
         Color originalColor = spriteRenderer.color;

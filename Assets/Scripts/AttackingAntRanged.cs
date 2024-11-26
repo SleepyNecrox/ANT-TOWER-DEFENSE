@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class AttackingAntRanged : MonoBehaviour
 {
@@ -92,6 +93,7 @@ public class AttackingAntRanged : MonoBehaviour
         }
     }
 
+    [PunRPC]
     private void AttackTarget()
     {
         if (attackTimer <= 0f)

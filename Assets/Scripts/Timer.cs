@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
-public class Timer : MonoBehaviour
+public class Timer : MonoBehaviourPun
 {
     [SerializeField] private TextMeshProUGUI timerTXT;
     [SerializeField] private TextMeshProUGUI player1GoldTXT;
@@ -23,21 +24,31 @@ public class Timer : MonoBehaviour
         }
 
         UpdateGold();
-        currentTime = 300f;;
+        currentTime = 300f;
+
         StartCoroutine(AddGold());
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("SyncTimer", RpcTarget.AllBuffered, currentTime); 
+        }
     }
 
     void Update()
     {
+        if (!PhotonNetwork.IsMasterClient) return; 
+
         if (currentTime > 0)
         {
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
+            photonView.RPC("SyncTimer", RpcTarget.Others, currentTime);
         }
         else
         {
             currentTime = 0;
             UpdateTimerDisplay();
+            photonView.RPC("SyncTimer", RpcTarget.Others, currentTime); 
         }
     }
 
@@ -64,5 +75,12 @@ public class Timer : MonoBehaviour
     {
         player1GoldTXT.text = $"{player1Gold.gold} Gold";
         player2GoldTXT.text = $"{player2Gold.gold} Gold";
+    }
+
+    [PunRPC]
+    void SyncTimer(float syncedTime)
+    {
+        currentTime = syncedTime;
+        UpdateTimerDisplay();
     }
 }
