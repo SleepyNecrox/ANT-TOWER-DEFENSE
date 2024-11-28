@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9035271220327284435, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: ObservedComponents.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -9035271220327284435, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 8271344176186741169}
     - target: {fileID: 1648286180057550058, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -112,6 +116,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6827275637445692379, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: goldReward
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7285275332124311012, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -125,3 +133,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+--- !u!114 &8271344176186741169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3481388342287758211, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+  m_PrefabInstance: {fileID: 4799104324798259762}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

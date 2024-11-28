@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6827275637445692379, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: goldReward
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7285275332124311012, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Enabled
       value: 1

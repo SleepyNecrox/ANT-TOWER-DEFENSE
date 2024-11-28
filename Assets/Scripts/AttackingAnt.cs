@@ -14,10 +14,7 @@ public class AttackingAnt : MonoBehaviour
     private Transform currentTarget;
     private float attackTimer;
     private string enemyTag;
-
-    private string eventTag = "GoldEvent";
     private AntStats antStats;
-
     private Animator animator;
 
     void Start()
@@ -100,12 +97,6 @@ public class AttackingAnt : MonoBehaviour
                 targetHealth.TakeDamage(antStats.damage);
             }
 
-            GoldEvent goldEvent = currentTarget.GetComponent<GoldEvent>();
-            if (goldEvent != null)
-            {
-                goldEvent.OnHit(PhotonNetwork.LocalPlayer.ActorNumber);
-            }
-
             attackTimer = attackCooldown;
         }
         attackTimer -= Time.deltaTime;
@@ -118,7 +109,7 @@ public class AttackingAnt : MonoBehaviour
 
         foreach (Collider enemy in enemies)
         {
-            if (enemy.CompareTag(enemyTag) || enemy.CompareTag(eventTag))
+            if (enemy.CompareTag(enemyTag))
             {
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < closestDistance)

@@ -20,8 +20,6 @@ public class AttackingAntRanged : MonoBehaviour
     private float attackTimer;
     private string enemyTag;
 
-    private string eventTag = "GoldEvent";
-
     private AntStats antStats;
 
     private Animator animator;
@@ -122,7 +120,7 @@ public class AttackingAntRanged : MonoBehaviour
 
         foreach (Collider enemy in enemies)
         {
-            if (enemy.CompareTag(enemyTag) || enemy.CompareTag(eventTag))
+            if (enemy.CompareTag(enemyTag))
             {
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < closestDistance)
