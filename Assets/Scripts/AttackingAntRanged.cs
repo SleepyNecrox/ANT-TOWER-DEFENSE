@@ -20,10 +20,15 @@ public class AttackingAntRanged : MonoBehaviour
     private float attackTimer;
     private string enemyTag;
 
+    private string eventTag = "GoldEvent";
+
     private AntStats antStats;
+
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         antStats = GetComponent<AntStats>();
 
         agent = GetComponent<NavMeshAgent>();
@@ -78,6 +83,7 @@ public class AttackingAntRanged : MonoBehaviour
 
             else
             {
+                animator.SetBool("Attack", false);
                 agent.isStopped = false;
                 MoveToTarget();
             }
@@ -88,6 +94,7 @@ public class AttackingAntRanged : MonoBehaviour
     {
         if (currentTarget != null)
         {
+            animator.SetBool("Attack", false);
             agent.isStopped = false;
             agent.SetDestination(currentTarget.position);
         }
@@ -98,13 +105,13 @@ public class AttackingAntRanged : MonoBehaviour
     {
         if (attackTimer <= 0f)
         {
+            animator.SetBool("Attack", true);
             agent.isStopped = true;
 
             Instantiate(arrowPrefab, shootArea.position, shootArea.rotation);
             
             attackTimer = attackCooldown;
         }
-
         attackTimer -= Time.deltaTime;
     }
 
@@ -115,7 +122,7 @@ public class AttackingAntRanged : MonoBehaviour
 
         foreach (Collider enemy in enemies)
         {
-            if (enemy.CompareTag(enemyTag))
+            if (enemy.CompareTag(enemyTag) || enemy.CompareTag(eventTag))
             {
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < closestDistance)

@@ -39,6 +39,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9035271220327284435, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2223455749280077039, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       propertyPath: m_Name
       value: Anthena 2
@@ -146,12 +150,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2223455749280077039, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1973889102980667732}
-    - targetCorrespondingSourceObject: {fileID: 2223455749280077039, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4250353922632503286}
-    - targetCorrespondingSourceObject: {fileID: 2223455749280077039, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6080319215631982831}
   m_SourcePrefab: {fileID: 100100000, guid: ff4b8efd3b3e6af419c0d2a2970215ab, type: 3}
 --- !u!4 &802241880366069925 stripped
 Transform:
@@ -180,41 +178,3 @@ MonoBehaviour:
   attackCooldown: 1.5
   arrowPrefab: {fileID: 5798960395400329550, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
   shootArea: {fileID: 3412587235693820228}
---- !u!114 &-4250353922632503286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986950872493465341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &6080319215631982831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986950872493465341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1

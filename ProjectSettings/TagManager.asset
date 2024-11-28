@@ -9,6 +9,7 @@ TagManager:
   - RedBase
   - BlueBase
   - Timer
+  - GoldEvent
   layers:
   - Default
   - TransparentFX

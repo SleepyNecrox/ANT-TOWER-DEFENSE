@@ -15,10 +15,14 @@ public class AttackingAnt : MonoBehaviour
     private float attackTimer;
     private string enemyTag;
 
+    private string eventTag = "GoldEvent";
     private AntStats antStats;
+
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         antStats = GetComponent<AntStats>();
 
         agent = GetComponent<NavMeshAgent>();
@@ -67,6 +71,7 @@ public class AttackingAnt : MonoBehaviour
 
         else
         {
+            animator.SetBool("Attack", false);
             agent.isStopped = false;
         }
     }
@@ -75,6 +80,7 @@ public class AttackingAnt : MonoBehaviour
     {
         if (currentTarget != null)
         {
+            animator.SetBool("Attack", false);
             agent.isStopped = false;
             agent.SetDestination(currentTarget.position);
         }
@@ -85,6 +91,7 @@ public class AttackingAnt : MonoBehaviour
     {
         if (attackTimer <= 0f)
         {
+            animator.SetBool("Attack", true);
             agent.isStopped = true;
 
             Health targetHealth = currentTarget.GetComponent<Health>();
@@ -93,9 +100,14 @@ public class AttackingAnt : MonoBehaviour
                 targetHealth.TakeDamage(antStats.damage);
             }
 
+            GoldEvent goldEvent = currentTarget.GetComponent<GoldEvent>();
+            if (goldEvent != null)
+            {
+                goldEvent.OnHit(PhotonNetwork.LocalPlayer.ActorNumber);
+            }
+
             attackTimer = attackCooldown;
         }
-
         attackTimer -= Time.deltaTime;
     }
 
@@ -106,7 +118,7 @@ public class AttackingAnt : MonoBehaviour
 
         foreach (Collider enemy in enemies)
         {
-            if (enemy.CompareTag(enemyTag))
+            if (enemy.CompareTag(enemyTag) || enemy.CompareTag(eventTag))
             {
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < closestDistance)

@@ -8,6 +8,7 @@ public class ProjectileArrow : MonoBehaviour
     [SerializeField] private int damage = 10;
     [SerializeField] private float lifetime = 5f;
     private string enemyTag;
+    private string eventTag = "GoldEvent";
     [SerializeField] private float upwardForce = 5f;
 
     private Rigidbody rb;
@@ -47,7 +48,7 @@ public class ProjectileArrow : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag(enemyTag))
+            if (collider.CompareTag(enemyTag) || collider.CompareTag(eventTag))
             {
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
                 if (distance < closestDistance)
@@ -64,7 +65,7 @@ public class ProjectileArrow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("PLEASE HIT");
-        if (other.CompareTag(enemyTag))
+        if (other.CompareTag(enemyTag) || collider.CompareTag(eventTag))
         {
             Health targetHealth = other.GetComponent<Health>();
             if (targetHealth != null)

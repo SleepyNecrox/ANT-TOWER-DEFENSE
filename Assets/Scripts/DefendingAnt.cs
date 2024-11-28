@@ -19,8 +19,11 @@ public class DefendingAnt : MonoBehaviour
     [SerializeField] private TurretState currentState;
     private float fireTimer;
     private Transform target;
+
+    private Animator animator;
     void Start()
     {
+        animator = GetComponentInParent<Animator>();
         currentState = TurretState.Idle;
         fireTimer = fireRate;
     }
@@ -49,6 +52,10 @@ public class DefendingAnt : MonoBehaviour
         {
             target = detectedTargets[0].transform;
             currentState = TurretState.Targeting;
+        }
+        else
+        {
+            animator.SetBool("Attack", false);
         }
     }
 
@@ -83,6 +90,7 @@ public class DefendingAnt : MonoBehaviour
             return;
         }
 
+        animator.SetBool("Attack", true);
         Instantiate(projectilePrefab, shootArea.position, shootArea.rotation);
 
         fireTimer = fireRate;
