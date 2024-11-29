@@ -17,6 +17,13 @@ public class AttackingAnt : MonoBehaviour
     private AntStats antStats;
     private Animator animator;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -88,6 +95,7 @@ public class AttackingAnt : MonoBehaviour
     {
         if (attackTimer <= 0f)
         {
+            audioManager.PlaySFX(audioManager.Hit);
             animator.SetBool("Attack", true);
             agent.isStopped = true;
 

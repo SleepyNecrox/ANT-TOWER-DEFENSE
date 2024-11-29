@@ -24,6 +24,13 @@ public class AttackingAntRanged : MonoBehaviour
 
     private Animator animator;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -103,6 +110,7 @@ public class AttackingAntRanged : MonoBehaviour
     {
         if (attackTimer <= 0f)
         {
+            audioManager.PlaySFX(audioManager.Arrow);
             animator.SetBool("Attack", true);
             agent.isStopped = true;
 

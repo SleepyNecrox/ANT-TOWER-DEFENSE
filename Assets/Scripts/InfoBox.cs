@@ -13,6 +13,13 @@ public class InfoBox : MonoBehaviour
 
     private Gold playerGold;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     public void ShowInfo(AntStats antStats, CardBehaviour cardBehaviour, Gold playerGoldRef)
     {
         currentCard = cardBehaviour;
@@ -24,6 +31,7 @@ public class InfoBox : MonoBehaviour
 
     public void Close()
     {
+        audioManager.PlaySFX(audioManager.InfoBoxPopUp);
         infoBox.SetActive(false);
     }
 

@@ -37,6 +37,13 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [SerializeField] private GameObject rightClickIcon;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         Gold[] allGoldScripts = FindObjectsOfType<Gold>();
@@ -66,6 +73,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        audioManager.PlaySFX(audioManager.CardHover);
         parentLayoutGroup.enabled = false;
         transform.localScale = originalScale * 1.15f;
         transform.SetAsLastSibling();
@@ -84,6 +92,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             if (isCooldown) return;
 
+            audioManager.PlaySFX(audioManager.Retro);
             if (level == 1 && playerGold.CanAfford(goldCost))
             {
                 playerGold.gold -= goldCost;
@@ -109,6 +118,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     if (eventData.button == PointerEventData.InputButton.Right)
     {
+        audioManager.PlaySFX(audioManager.Select);
         rightClickIcon.SetActive(false);
         infoBox.SetActive(true);
         InfoBox infoBoxScript = infoBox.GetComponent<InfoBox>();
@@ -119,6 +129,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void Upgrade()
     {
+        audioManager.PlaySFX(audioManager.Button);
         level += 1;
     }
 

@@ -13,6 +13,13 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject defeatScreen;
     [SerializeField] private GameObject tieScreen;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
@@ -60,6 +67,7 @@ public class PlayerUI : MonoBehaviour
     public void GoMenu()
     {
         Time.timeScale = 1f;
+        audioManager.PlaySFX(audioManager.Button);
         PhotonNetwork.Disconnect();
         StartCoroutine(WaitForDisconnect());
     }

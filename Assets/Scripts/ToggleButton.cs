@@ -11,6 +11,11 @@ public class ToggleButton : MonoBehaviour
     private Vector3 originalPosition;
     public Button showButton;
     public Button hideButton;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -23,6 +28,7 @@ public class ToggleButton : MonoBehaviour
 
     public void Show()
     {
+        audioManager.PlaySFX(audioManager.Toggle);
         cardsUI.SetBool("Show", true);
         showButton.gameObject.SetActive(false);
         hideButton.gameObject.SetActive(true);
@@ -30,6 +36,7 @@ public class ToggleButton : MonoBehaviour
 
     public void Hide()
     {
+        audioManager.PlaySFX(audioManager.Toggle);
         cardsUI.SetBool("Show", false);
         hideButton.gameObject.SetActive(false);
         showButton.gameObject.SetActive(true);
