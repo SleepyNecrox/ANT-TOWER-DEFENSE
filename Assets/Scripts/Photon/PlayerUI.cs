@@ -67,13 +67,14 @@ public class PlayerUI : MonoBehaviour
     public void GoMenu()
     {
         Time.timeScale = 1f;
-        audioManager.PlaySFX(audioManager.Button);
         PhotonNetwork.Disconnect();
         StartCoroutine(WaitForDisconnect());
     }
 
     private IEnumerator WaitForDisconnect()
     {
+        PhotonNetwork.Disconnect();
+        
         while (PhotonNetwork.IsConnected)
         {
             yield return null;

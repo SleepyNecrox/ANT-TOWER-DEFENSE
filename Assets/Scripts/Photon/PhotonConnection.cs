@@ -6,6 +6,14 @@ using Photon.Realtime;
 
 public class PhotonConnection : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private GameObject connectingTXT;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Master");
@@ -31,6 +39,8 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
 
     public void Connect()
     {
+        audioManager.PlaySFX(audioManager.Button);
+        connectingTXT.SetActive(true);
         if (PhotonNetwork.IsConnected)
         {
             Debug.Log("Already connected");

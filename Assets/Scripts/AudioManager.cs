@@ -44,28 +44,7 @@ public class AudioManager : MonoBehaviour
 
     private void PlaySceneMusic()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-
-        switch (sceneName)
-        {
-
-            case "00 Menu":
-                musicSource.clip = Menu;
-                break;
-
-            case "01 Lobby":
-                musicSource.clip = Menu;
-                break;
-
-            case "02 Prototype":
-                musicSource.clip = Gameplay;
-                break;
-
-            default:
-                musicSource.clip = Gameplay;
-                break;
-        }
-
+        musicSource.clip = Gameplay;
         musicSource.Play();
     }
 

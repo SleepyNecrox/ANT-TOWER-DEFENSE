@@ -16,6 +16,13 @@ public class ReadyScreen : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI player1ReadyStatus;
     [SerializeField] private TextMeshProUGUI player2ReadyStatus;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         readyButton.onClick.AddListener(ReadyButtonClicked);
@@ -52,6 +59,7 @@ public class ReadyScreen : MonoBehaviourPunCallbacks
 
     public void ReadyButtonClicked()
     {
+        audioManager.PlaySFX(audioManager.Button);
         Player player1 = PhotonNetwork.PlayerList.FirstOrDefault(p => p.ActorNumber == 1);
         Player player2 = PhotonNetwork.PlayerList.FirstOrDefault(p => p.ActorNumber == 2);
 
