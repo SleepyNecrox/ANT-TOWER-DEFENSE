@@ -11,8 +11,8 @@ public class DefendingAnt : MonoBehaviour
         Firing,
     }
 
-    [SerializeField] internal float range = 5f;
-    [SerializeField] internal float fireRate = 1f;
+    [SerializeField] internal float range;
+    [SerializeField] internal float fireRate;
     [SerializeField] internal LayerMask enemyLayer;
     [SerializeField] private Transform shootArea;
     [SerializeField] private GameObject projectilePrefab;

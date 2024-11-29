@@ -53,8 +53,4 @@ public class AudioManager : MonoBehaviour
         SFXSource.PlayOneShot(clip);
     }
 
-    public void StopDialogueSFX()
-    {
-        SFXSource.Stop();
-    }
 }
