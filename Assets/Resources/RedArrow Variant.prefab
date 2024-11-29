@@ -72,6 +72,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.506
       objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.46000078
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.41000056
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5572016
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5572013
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.4353463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4353466
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -13.998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850706955957830656, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 5798960395400329550, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
       propertyPath: m_Name
       value: RedArrow Variant
@@ -80,8 +120,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
+    - target: {fileID: 6348798977070783588, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.16629584
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348798977070783588, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.22068387
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348798977070783588, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.9528302
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4133144757266350235, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5798960395400329550, guid: 99c3774cb0803924d9a6d098dcdaa81d, type: 3}

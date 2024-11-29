@@ -41,6 +41,6 @@ public class InfoBox : MonoBehaviour
 
     private void UpdateGoldText()
     {
-        goldText.text = $"{playerGold.gold} Gold";
+        goldText.text = $"{playerGold.gold}";
     }
 }

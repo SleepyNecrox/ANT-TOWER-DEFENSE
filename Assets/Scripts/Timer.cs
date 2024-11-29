@@ -10,7 +10,6 @@ public class Timer : MonoBehaviourPun
     [SerializeField] private TextMeshProUGUI player1GoldTXT;
     [SerializeField] private TextMeshProUGUI player2GoldTXT;
     private float currentTime;
-
     private Gold player1Gold;
     private Gold player2Gold;
 
@@ -48,7 +47,10 @@ public class Timer : MonoBehaviourPun
         {
             currentTime = 0;
             UpdateTimerDisplay();
-            photonView.RPC("SyncTimer", RpcTarget.Others, currentTime); 
+            if (PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("GameEndTie", RpcTarget.All);
+            }
         }
     }
 
@@ -73,8 +75,8 @@ public class Timer : MonoBehaviourPun
 
     public void UpdateGold()
     {
-        player1GoldTXT.text = $"{player1Gold.gold} Gold";
-        player2GoldTXT.text = $"{player2Gold.gold} Gold";
+        player1GoldTXT.text = $"{player1Gold.gold}";
+        player2GoldTXT.text = $"{player2Gold.gold}";
     }
 
     [PunRPC]
@@ -82,5 +84,16 @@ public class Timer : MonoBehaviourPun
     {
         currentTime = syncedTime;
         UpdateTimerDisplay();
+    }
+
+    [PunRPC]
+    void GameEndTie()
+    {
+        PlayerUI playerUI = FindObjectOfType<PlayerUI>();
+
+        if (playerUI != null)
+        {
+            playerUI.TieGame();
+        }
     }
 }

@@ -35,6 +35,8 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] internal int level = 1;
     [SerializeField] private int playerID;
 
+    [SerializeField] private GameObject rightClickIcon;
+
     void Start()
     {
         Gold[] allGoldScripts = FindObjectsOfType<Gold>();
@@ -105,8 +107,9 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             }
         }
 
-        if (eventData.button == PointerEventData.InputButton.Right)
+    if (eventData.button == PointerEventData.InputButton.Right)
     {
+        rightClickIcon.SetActive(false);
         infoBox.SetActive(true);
         InfoBox infoBoxScript = infoBox.GetComponent<InfoBox>();
         infoBoxScript.ShowInfo(antStats, this, playerGold); 

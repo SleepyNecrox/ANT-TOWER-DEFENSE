@@ -11,8 +11,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject redUI;
     [SerializeField] private GameObject victoryScreen;
     [SerializeField] private GameObject defeatScreen;
-    [SerializeField] private Button menuButton;
-
+    [SerializeField] private GameObject tieScreen;
 
     void Start()
     {
@@ -60,7 +59,24 @@ public class PlayerUI : MonoBehaviour
 
     public void GoMenu()
     {
+        Time.timeScale = 1f;
+        PhotonNetwork.Disconnect();
+        StartCoroutine(WaitForDisconnect());
+    }
+
+    private IEnumerator WaitForDisconnect()
+    {
+        while (PhotonNetwork.IsConnected)
+        {
+            yield return null;
+        }
         SceneManager.LoadScene(0);
+    }
+
+    public void TieGame()
+    {
+        Time.timeScale = 0f;
+        tieScreen.SetActive(true);
     }
 
 }

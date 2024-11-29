@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf241450bc638d489b98d927d5e2f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReward: 5
+  goldReward: 3
   currentHealth: 0
 --- !u!135 &-8225572408540199876
 SphereCollider:
@@ -216,7 +216,7 @@ MonoBehaviour:
   damage: 10
   health: 120
   speed: 1.75
-  upgradeCost: 35
+  upgradeCost: 20
 --- !u!114 &2629965008784893213
 MonoBehaviour:
   m_ObjectHideFlags: 0

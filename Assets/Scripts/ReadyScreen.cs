@@ -43,11 +43,11 @@ public class ReadyScreen : MonoBehaviourPunCallbacks
         Player player1 = PhotonNetwork.PlayerList.FirstOrDefault(p => p.ActorNumber == 1);
         Player player2 = PhotonNetwork.PlayerList.FirstOrDefault(p => p.ActorNumber == 2);
 
-        player1Username.text = player1 != null ? player1.NickName : "Waiting...";
-        player1ReadyStatus.text = player1 != null ? "Ready" : "Waiting for Player 1...";
+        player1Username.text = player1 != null ? player1.NickName : "Player 1";
+        player1ReadyStatus.text = player1 != null ? "Ready" : "Waiting For P1";
 
-        player2Username.text = player2 != null ? player2.NickName : "Waiting...";
-        player2ReadyStatus.text = player2 != null ? "Ready" : "Waiting for Player 2...";
+        player2Username.text = player2 != null ? player2.NickName : "Player 2";
+        player2ReadyStatus.text = player2 != null ? "Ready" : "Waiting For P2";
     }
 
     public void ReadyButtonClicked()
